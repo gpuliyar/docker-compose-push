@@ -1,0 +1,8 @@
+version: '3.2'
+services:
+  go_app_1_0_0:
+    build: ./1.0.0
+    image: gpuliyar/go_test_app:1.0.0
+  go_app_1_1_0:
+    build: ./1.1.0
+    image: gpuliyar/go_test_app:1.1.0
