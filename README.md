@@ -13,14 +13,15 @@ docker login -u <user name>
 
 ### Second, invoke `docker-compose` to build
 ```
-docker-compose up --force-recreate --build --remove-orphans --no-start
+docker-compose build --compress --force-rm --no-cache --pull --parallel
 ```
-1. `--force-recreate` - Recreate containers even if their configuration and image haven't changed.
-2. `--build` - Build images before starting containers.
-3. `--remove-orphans` - Remove containers for services not defined in the Compose file.
-4. `--no-start` - Don't start the services after creating them. As we are not interested in starting the services, instead we want to build them and leave it at that so that we can push it later to the Hub Repository.
-
 Let's see what the options mean here
+
+1. `--compress` - Compress the build context using gzip
+2. `--force-rm` - Always remove intermediate containers
+3. `--no-cache` - Do not use cache when building the image
+4. `--pull` - Always attempt to pull a newer version of the image
+5. `--parallel` - Build images in parallel
 
 ### Third, invoke `docker-compose` to push
 ```
